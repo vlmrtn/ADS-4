@@ -41,7 +41,7 @@ int countPairs2(int *arr, int len, int value) {
       while (left < right && arr[left] == arr[left - 1]) {
         left++;
       }
-      while (left < right && arr[right] == arr[right - 1]) {
+      while (left < right && arr[right] == arr[right + 1]) {
         right--;
       }
     } else if (sum < value) {
@@ -71,6 +71,7 @@ int binarySearch(int *arr, int len, int target, int left) {
 
 int countPairs3(int *arr, int len, int value) {
   int count = 0;
+  bubbleSort(arr, len);
   for (int i = 0; i < len - 1; i++) {
     int number = value - arr[i];
     int index = binarySearch(arr, len, number, i + 1);
