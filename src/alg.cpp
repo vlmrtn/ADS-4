@@ -73,13 +73,13 @@ int countPairs3(int *arr, int len, int value) {
   int count = 0;
   bubbleSort(arr, len);
   for (int i = 0; i < len - 1; i++) {
+    if (i > 0 && arr[i] == arr[i - 1]) {
+      continue;
+    }
     int number = value - arr[i];
     int index = binarySearch(arr, len, number, i + 1);
     if (index != -1) {
       count++;
-    }
-    while (i < len - 1 && arr[i] == arr[i + 1]) {
-      i++;
     }
   }
   return count;
