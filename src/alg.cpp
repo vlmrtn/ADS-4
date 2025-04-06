@@ -25,23 +25,15 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int *arr, int len, int value) {
-  insertionsort(arr, len);
+  int count = 0;
   int left = 0;
   int right = len - 1;
-  int count = 0;
   while (left < right) {
     int sum = arr[left] + arr[right];
     if (sum == value) {
-      int lefttemp = 1, righttemp = 1;
-      while (left + 1 < right && arr[left] == arr[left + 1]) {
-        lefttemp++;
-        left++;
-      }
-      while (right - 1 > left && arr[right] == arr[right - 1]) {
-        righttemp++;
-        right--;
-      }
-      count += lefttemp * righttemp;
+      count++;
+      while (left < right && arr[left] == arr[left + 1]) left++;
+      while (left < right && arr[right] == arr[right - 1]) right--;
       left++;
       right--;
     } else if (sum < value) {
@@ -52,7 +44,6 @@ int countPairs2(int *arr, int len, int value) {
   }
   return count;
 }
-
 int binarySearch(int* arr, int left, int right, int value) {
   int count = 0, check;
   while (left <= right) {
