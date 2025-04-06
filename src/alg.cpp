@@ -25,7 +25,7 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int *arr, int len, int value) {
-  insertionSort(arr, len);
+  insertionsort(arr, len);
   int left = 0;
   int right = len - 1;
   int count = 0;
