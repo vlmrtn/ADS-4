@@ -85,7 +85,7 @@ int countPairs3(int *arr, int len, int value) {
     if (number <= 0) {
       break;
     }
-    count += binarysearch(arr, len, number, i + 1);
+    count += binarySearch(arr, i+1, len-1, number);
   }
   return count;
 }
