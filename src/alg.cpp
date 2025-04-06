@@ -15,7 +15,7 @@ int countPairs1(int *arr, int len, int value) {
   insertionsort(arr, len);
   int count = 0;
   for (int i = 0; i < len; i++) {
-    for (int j = i+1; j < len; j++) {
+    for (int j = i + 1; j < len; j++) {
       if (arr[i] + arr[j] == value) {
         count++;
       }
@@ -33,14 +33,18 @@ int countPairs2(int *arr, int len, int value) {
     int sum = arr[left] + arr[right];
     if (sum == value) {
       count++;
-      int i = 0;
-      while (i < right) {
-        if (arr[i] == value - arr[left]) {
-          count++;
-        }
-        i++;
+      int lefttemp = 1, righttemp = 1;
+      while (left + 1 < right && arr[left] == arr[left + 1]) {
+        lefttemp++;
+        left++;
       }
+      while (right - 1 > left && arr[right] == arr[right - 1]) {
+        righttemp++;
+        right--;
+      }
+      count += lefttemp * righttemp;
       left++;
+      right--;
     } else if (sum < value) {
       left++;
     } else {
