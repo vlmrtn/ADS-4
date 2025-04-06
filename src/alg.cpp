@@ -12,7 +12,7 @@ void insertionsort(int* arr, int len) {
 }
 
 int countPairs1(int *arr, int len, int value) {
-  insertionSort(arr, len);
+  insertionsort(arr, len);
   int count = 0;
   for (int i = 0; i < len; i++) {
     for (int j = i+1; j < len; j++) {
@@ -25,26 +25,27 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int *arr, int len, int value) {
-insertionSort(arr, len);
-int left = 0;
-int right = len - 1;
-int count = 0;
-while (left < right) {
-  int sum = arr[left] + arr[right];
-  if (sum == value) {
-    count++;
-    int i = 0;
-    while (i < right) {
-      if (arr[i] == value - arr[left]) {
-        count++;
+  insertionSort(arr, len);
+  int left = 0;
+  int right = len - 1;
+  int count = 0;
+  while (left < right) {
+    int sum = arr[left] + arr[right];
+    if (sum == value) {
+      count++;
+      int i = 0;
+      while (i < right) {
+        if (arr[i] == value - arr[left]) {
+          count++;
+        }
+        i++;
       }
-      i++;
+      left++;
+    } else if (sum < value) {
+      left++;
+    } else {
+      right--;
     }
-    left++;
-  } else if (sum < value) {
-    left++;
-  } else {
-    right--;
   }
   return count;
 }
