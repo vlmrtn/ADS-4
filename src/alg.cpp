@@ -7,7 +7,7 @@ int countPairs1(int *arr, int len, int value) {
         count++;
         while (j + 1 < len && arr[j] == arr[j + 1]) {
           j++;
-        };
+        }
       }
     }
   }
