@@ -24,8 +24,8 @@ void bubbleSort(int *arr, int len) {
 }
 
 int countPairs2(int *arr, int len, int value) {
-  int count = 0;
   bubbleSort(arr, len);
+  int count = 0;
   int left = 0;
   int right = len - 1;
 
@@ -50,11 +50,11 @@ int countPairs2(int *arr, int len, int value) {
   return count;
 }
 
-int binarySearch(int *arr, int len, int target, int left) {
-  int low = left;
-  int high = len - 1;
-  while (low <= high) {
-    int mid = (low + high) / 2;
+int binarySearch(int *arr, int len, int target, int start) {
+  int left = start;
+  int right = len - 1;
+  while (left <= right) {
+    int mid = left + (right - left) / 2;
     if (arr[mid] == target) {
       return mid;
     } else if (arr[mid] < target) {
@@ -67,8 +67,8 @@ int binarySearch(int *arr, int len, int target, int left) {
 }
 
 int countPairs3(int *arr, int len, int value) {
-  int count = 0;
   bubbleSort(arr, len);
+  int count = 0;
   for (int i = 0; i < len - 1; i++) {
     if (i > 0 && arr[i] == arr[i - 1]) {
       continue;
