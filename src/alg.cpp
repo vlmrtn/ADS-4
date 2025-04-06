@@ -12,6 +12,7 @@ void insertionsort(int* arr, int len) {
 }
 
 int countPairs1(int *arr, int len, int value) {
+  insertionsort(arr, len)
   int count = 0;
   for (int i = 0; i < len; i++) {
     for (int j = 1 + i; j < len; j++) {
