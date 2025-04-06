@@ -1,37 +1,30 @@
 // Copyright 2021 NNTU-CS
-void bubblesort(int *arr, int len) {
-  for (int i = 0; i < len - 1; i++) {
-    for (int j = 0; j < len - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        int temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-      }
+void insertionsort(int* arr, int len) {
+  for (int i = 1; i < len; i++) {
+    int key = arr[i];
+    int j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+        j--;
     }
+    arr[j + 1] = key;
   }
 }
 
 int countPairs1(int *arr, int len, int value) {
   int count = 0;
-  bubblesort(arr, len);
   for (int i = 0; i < len; i++) {
-    int number = value - arr[i];
     for (int j = 1 + i; j < len; j++) {
-      if (arr[j] == number) {
-        if (i != j) {
-          count++;
-        }
+      if (arr[i] + arr[j] == value) {
+        count++;
       }
-    }
-    while (i + 1 < len && arr[i] == arr[i + 1]) {
-      i++;
     }
   }
   return count;
 }
 
 int countPairs2(int *arr, int len, int value) {
-  bubblesort(arr, len);
+  insertionsort(arr, len);
   int count = 0;
   int left = 0;
   int right = len - 1;
@@ -48,8 +41,6 @@ int countPairs2(int *arr, int len, int value) {
       while (left < right && arr[right] == rightvalue) {
         right--;
       }
-      left++;
-      right--;
     } else if (sum < value) {
       left++;
     } else {
@@ -63,7 +54,7 @@ int binarysearch(int *arr, int len, int target, int start) {
   int low = start;
   int high = len - 1;
   while (low <= high) {
-    int mid = low + (high - low) / 2;
+    int mid = (low + high) / 2;
     if (arr[mid] == target) {
       return mid;
     } else if (arr[mid] < target) {
@@ -77,7 +68,7 @@ int binarysearch(int *arr, int len, int target, int start) {
 
 
 int countPairs3(int *arr, int len, int value) {
-  bubblesort(arr, len);
+  insertionsort(arr, len);
   int count = 0;
   for (int i = 0; i < len - 1; i++) {
     if (i > 0 && arr[i] == arr[i - 1]) {
