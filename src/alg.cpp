@@ -1,16 +1,4 @@
 // Copyright 2021 NNTU-CS
-int countPairs1(int *arr, int len, int value) {
-  int count = 0;
-  for (int i = 0; i < len; i++) {
-    for (int j = 1 + i; j < len; j++) {
-      if (arr[i] + arr[j] == value) {
-        count++;
-      }
-    }
-  }
-  return count;
-}
-
 void bubblesort(int *arr, int len) {
   for (int i = 0; i < len - 1; i++) {
     for (int j = 0; j < len - i - 1; j++) {
@@ -23,6 +11,24 @@ void bubblesort(int *arr, int len) {
   }
 }
 
+int countPairs1(int *arr, int len, int value) {
+  int count = 0;
+  bubblesort(arr, len);
+  for (int i = 0; i < len; i++) {
+    int number = value - arr[i];
+    for (int j = 1 + i; j < len; j++) {
+      if (arr[j] == number) {
+        if (i != j) {
+          count++;
+        }
+      }
+    }
+    while (i + 1 < len && arr[i] == arr[i + 1]) {
+      i++;
+    }
+  }
+  return count;
+}
 
 int countPairs2(int *arr, int len, int value) {
   bubblesort(arr, len);
@@ -34,10 +40,12 @@ int countPairs2(int *arr, int len, int value) {
     int sum = arr[left] + arr[right];
     if (sum == value) {
       count++;
-      while (left < right && arr[left] == arr[left + 1]) {
+      int leftvalue = arr[left];
+      int rightvalue = arr[righ];
+      while (left < right && arr[left] == leftvalue) {
         left++;
       }
-      while (left < right && arr[right] == arr[right - 1]) {
+      while (left < right && arr[right] == rightvalue) {
         right--;
       }
       left++;
