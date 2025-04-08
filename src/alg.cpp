@@ -39,39 +39,74 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int *arr, int len, int value) {
-  insertionsort(arr, len);
-  int left = 0;
-  int right = len-1;
-  int count = 0;
-  while (left < right) {
-    int sum = arr[left] + arr[right];
-    if (sum == value) {
-      count++;
-      for (int i = left+1; i < right; i++) {
-        if (arr[i] == value - arr[left]) {
-          count++;
+    insertionsort(arr, len);
+    int count = 0;
+    int left = 0;
+    int right = len - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == value) {
+            if (arr[left] == arr[right]) {
+                int num = right - left + 1;
+                count += (num * (num - 1)) / 2;
+                break;
+            } else {
+                int countl = 1;
+                while (left + 1 < right && arr[left] == arr[left + 1]) {
+                    countl++;
+                    left++;
+                }
+                int countr = 1;
+                while (right - 1 > left && arr[right] == arr[right - 1]) {
+                    countr++;
+                    right--;
+                }
+                count += countl * countr;
+                left++;
+                right--;
+            }
+        } else if (sum < value) {
+            left++;
+        } else {
+            right--;
         }
-      }
-      left++;
-    } else if (sum < value) {
-      left++;
-    } else {
-      right--;
     }
-  }
-  return count;
+    return count;
 }
 
 
 int countPairs3(int *arr, int len, int value) {
-  insertionsort(arr, len);
-  int count = 0;
-  for (int i = 0; i < len - 1; i++) {
-    int num = value - arr[i];
-    if (num <= 0) {
-      break;
+    insertionsort(arr, len);
+    int count = 0;
+    int left = 0;
+    int right = len - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == value) {
+            if (arr[left] == arr[right]) {
+                int num = right - left + 1;
+                count += (num * (num - 1)) / 2;
+                break;
+            } else {
+                int countl = 1;
+                while (left + 1 < right && arr[left] == arr[left + 1]) {
+                    countl++;
+                    left++;
+                }
+                int countr = 1;
+                while (right - 1 > left && arr[right] == arr[right - 1]) {
+                    countr++;
+                    right--;
+                }
+                count += countl * countr;
+                left++;
+                right--;
+            }
+        } else if (sum < value) {
+            left++;
+        } else {
+            right--;
+        }
     }
-    count += binarySearch(arr, i+1, len-1, num);
-  }
-  return count;
+    return count;
 }
