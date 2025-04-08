@@ -8,7 +8,7 @@ void insertionsort(int* arr, int size) {
       j--;
     }
   }
-  arr[j + 1] = key;
+  arr[j+1] = key;
 }
 
 int binarySearch(int* arr, int left, int right, int value) {
