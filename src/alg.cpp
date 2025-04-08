@@ -39,28 +39,7 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int* arr, int len, int value) {
-    insertionsort(arr, len);
-    int count = 0;
-    int left = 0;
-    int right = len - 1;
-    while (left < right) {
-        int sum = arr[left] + arr[right];
-        if (sum == value) {
-            count++;
-            left++;
-            right--;
-        } else if (sum < value) {
-            left++;
-        } else {
-            right--;
-        }
-    }
-
-    return count;
-}
-
-int countPairs3(int *arr, int len, int value) {
-    insertionsort(arr, len);
+    insertionSort(arr, len);
     int count = 0;
     int left = 0;
     int right = len - 1;
@@ -88,8 +67,24 @@ int countPairs3(int *arr, int len, int value) {
             }
         } else if (sum < value) {
             left++;
-        } else {
+        } else { 
             right--;
+        }
+    }
+    return count;
+}
+
+
+int countPairs(int* arr, int len, int value) {
+    insertionsort(arr, len);
+    int count = 0;
+    for (int i = 0; i < len - 1; i++) {
+        if (i > 0 && arr[i] == arr[i - 1]) {
+            continue;
+        }
+        int target = value - arr[i];
+        if (binarySearch(arr, len, target) != -1) {
+            count++;
         }
     }
     return count;
