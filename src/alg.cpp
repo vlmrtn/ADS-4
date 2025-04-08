@@ -8,7 +8,7 @@ void insertionsort(int* arr, int size) {
       j--;
     }
   }
-  arr[j+1] = key;
+  arr[j + 1] = key;
 }
 
 int binarySearch(int* arr, int left, int right, int value) {
@@ -65,7 +65,7 @@ int countPairs3(int *arr, int len, int value) {
       count++;
       left++;
       right--;
-      while (left < right && arr[left] == arr[left - 1]) left ++;
+      while (left < right && arr[left] == arr[left - 1]) left++;
       while (left < right && arr[right] == arr[right + 1]) right--;
     } else if (sum < value) {
       left++;
