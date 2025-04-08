@@ -1,5 +1,5 @@
 // Copyright 2021 NNTU-CS
-void insertionSort(int* arr, int len) {
+void insertionsort(int* arr, int len) {
   for (int i = 1; i < len; i++) {
     int key = arr[i];
     int j = i - 1;
