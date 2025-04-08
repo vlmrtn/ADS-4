@@ -39,7 +39,7 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int* arr, int len, int value) {
-    insertionSort(arr, len);
+    insertionsort(arr, len);
     int count = 0;
     int left = 0;
     int right = len - 1;
