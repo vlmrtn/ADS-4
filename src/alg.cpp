@@ -60,7 +60,7 @@ int countPairs2(int *arr, int len, int value) {
 
 
 int countPairs3(int *arr, int len, int value) {
-  insertionSort(arr, len);
+  insertionsort(arr, len);
   int count = 0;
   for (int i = 0; i < len - 1; i++) {
     int num = value - arr[i];
