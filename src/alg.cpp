@@ -29,12 +29,10 @@ int binarySearch(int* arr, int left, int right, int value) {
                 check++;
             }
             break;
-        }
-        else if (arr[mid] < value) {
-            left = mid + 1;
-        }
-        else {
-            right = mid - 1;
+        } else if (arr[mid] < value) {
+          left = mid + 1;
+        } else {
+          right = mid - 1;
         }
     }
     return count;
@@ -72,12 +70,10 @@ int countPairs2(int* arr, int len, int value) {
             count += countl * countr;
             left++;
             right--;
-        }
-        else if (sum < value) {
-            left++;
-        }
-        else {
-            right--;
+        } else if (sum < value) {
+          left++;
+        } else {
+          right--;
         }
     }
     return count;
