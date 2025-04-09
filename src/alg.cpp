@@ -43,8 +43,8 @@ int countPairs2(int* arr, int len, int value) {
     for (; 1;) {
         if (arr[rboard] > value) {
             rboard--;
-        } else { 
-            break; 
+        } else {
+            break;
         }
     }
     for (int i = 0; i <= rboard; i++) {
